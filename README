@@ -1,0 +1,20 @@
+This is a version sorting module for Go.
+
+Its use is simple...
+
+import (
+       "sort"
+       "version_sort"
+)
+
+func whatever() {
+     strs []string
+
+     ...
+
+     sort.Sort(version_sort.ByVersion(strs))
+
+     ...
+     
+     // use your newly sorted strings!
+}
