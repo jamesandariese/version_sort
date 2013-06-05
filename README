@@ -18,3 +18,25 @@ func whatever() {
      
      // use your newly sorted strings!
 }
+
+This sorting method will sort any string at all (so long as it has no
+numbers larger than an int64).
+
+The algorithm followed is to tokenize the string based on numbers,
+periods, and anything that's not a number or a string.  Compare all
+these in order following these rules:
+
+str < blank < int
+
+Anything within its category is compared.  Periods are used to
+separate numbers and strings which are next to each other but are
+otherwise optional.  This may change in the future because it's kinda
+weird.
+
+Taken from the unit test, these are in order.
+
+   	strs := []string{"0.0", "1.1rc2", "1.1", "1.2.3.2", "1.2.3.4", "2.dev1", "2", "2.2.rc1", "2.2"}
+
+1.1 > 1.1rc1
+1.1.rc1 == 1.1rc1 // this is kinda weird, no?
+1.1.1 > 1.1 > 1.1rc1
